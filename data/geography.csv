@@ -1,0 +1,11 @@
+Country_Code,Country_Name,Market_Tier,MAU,ARPU_$,eCPM_$,Total_Revenue_$
+IN,India,Tier 2,1631396,0.1979,0.77,322853.27
+US,United States,Tier 1,494496,1.2108,5.64,598735.76
+GB,United Kingdom,Tier 1,120390,0.6034,6.54,72643.33
+BR,Brazil,Tier 2,687659,0.2359,1.2,162218.76
+ID,Indonesia,Tier 3,827201,0.1212,1.26,100256.76
+DE,Germany,Tier 1,101672,0.6227,7.79,63311.15
+VN,Vietnam,Tier 3,585803,0.1174,1.19,68773.27
+MX,Mexico,Tier 2,363294,0.2364,1.03,85882.7
+PH,Philippines,Tier 3,474107,0.055,1.14,26075.88
+CA,Canada,Tier 1,100617,0.9317,12.42,93744.86
