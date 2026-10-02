@@ -1,144 +1,240 @@
-# ZO Play — Product, Strategy & Growth Analytics Engine
+# Mobile Game Analytics: Player Behaviour, Retention & Monetization
 
 **Author**: [Aman Yadav](https://github.com/amanyadav01234)  
-**Target Organization**: LionZO Technologies  
-**Product**: ZO Play (Gaming & Gaming Content Platform)  
-**Role Target**: Strategy & Growth Intern (Product, Strategy & Growth)  
+**GitHub Profile**: [github.com/amanyadav01234](https://github.com/amanyadav01234)  
+
+An end-to-end data analytics and Power BI project focused on understanding how players engage with a mobile game, how long they stay, how the game generates revenue, and how performance varies across markets.
 
 ---
 
-## Executive Overview
+## About the Project
 
-This repository presents an end-to-end **Product, Strategy & Growth Analytics Solution** engineered for **ZO Play** (by **LionZO Technologies**). It combines Python data pipelines, dynamic financial/unit-economics modeling, cohort retention diagnostics, DAX measures, Power BI executive dashboards, and strategic growth frameworks to scale ZO Play game verticals, optimize P&L margins, and improve user funnels.
+This project was developed as a comprehensive business intelligence and product analytics solution for a mobile game publisher.
 
-```
-+-----------------------------------------------------------------------------------+
-|                        ZO PLAY STRATEGY & GROWTH WORKFLOW                         |
-+-----------------------------------------------------------------------------------+
-|  Multi-Source Data     --> Python Analytics Engine --> Power BI Dashboard          |
-|  (Firebase, GameAnalytics,   (Pipeline, P&L Model,     (DAX Measures, Viz &       |
-|   Google AdMob)               Cohort & Funnels)         Market Tier Analysis)     |
-|                                                                                   |
-|  --> 100x Growth Strategy & Category Management Blueprint (LionZO Leadership)     |
-+-----------------------------------------------------------------------------------+
-```
+The goal was to bring together data from multiple analytics sources and turn it into a more useful view of overall game performance, unit economics, and strategic growth drivers.
 
----
+The analysis focuses on four main areas:
 
-## Strategic Alignment with LionZO Technologies Role
+- **Player engagement**
+- **Player retention and churn**
+- **Monetization and advertising performance**
+- **Geographic performance & market tiers**
 
-| Job Responsibility (LionZO Technologies) | Implementation & Deliverables in Repository |
-| :--- | :--- |
-| **Manage P&L & Optimize Margins** | Python P&L Model ([`src/pnl_unit_economics.py`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/src/pnl_unit_economics.py)), AdMob vs IAP revenue split analysis, COGS & margin calculation. |
-| **User Acquisition & Retention Funnels** | Cohort Retention Analysis ([`src/funnel_retention_analysis.py`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/src/funnel_retention_analysis.py)), Day-1/Day-7 churn reduction roadmap. |
-| **Grow Vertical to 100x Revenue** | 100x Scaling Playbook ([`docs/100X_Vertical_Growth_Strategy.md`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/docs/100X_Vertical_Growth_Strategy.md)) with financial projections & LTV/CAC optimization. |
-| **Strategic Content Partnerships** | Partner RevShare Framework ([`docs/Market_Competitor_Analysis.md`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/docs/Market_Competitor_Analysis.md)) evaluating 3rd party game developers. |
-| **Product & Category Management** | Product Requirement Document ([`docs/ZO_Play_Product_PRD.md`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/docs/ZO_Play_Product_PRD.md)) with feature ideation (ZO Pass, Rewarded Video) & RICE scoring. |
-| **Market & Competitor Analysis** | Competitive Benchmark Report ([`docs/Market_Competitor_Analysis.md`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/docs/Market_Competitor_Analysis.md)) positioning ZO Play against WinZO, MPL & Gamezop. |
+I used **Python** to prepare, transform, and model the data, then built an interactive **Power BI dashboard** and strategic growth framework to explore the results and identify actionable business insights.
 
 ---
 
-## Power BI Dashboard Showcase
+## What I Worked On
 
-The Power BI solution is structured into four interactive business view pages:
+The project followed an end-to-end analytics and growth workflow:
+
+**Data Sources → Python ETL → Data Preparation → Financial & Retention Modeling → Power BI → DAX → Dashboard → Business Strategy**
+
+### Data Preparation & Pipeline
+
+The project started with exported raw CSV data from Firebase Analytics, GameAnalytics, and Google AdMob.
+
+Using Python, pandas, and NumPy, I:
+
+- Inspected the datasets and their underlying schema structure
+- Checked for duplicate records and handled missing values
+- Standardized date fields and timestamp formats
+- Reviewed data consistency across analytics tools
+- Created additional analytical fields (DAU/MAU ratio, churn rates, eCPM)
+- Calculated ARPU, ARPPU, and returning-user percentages
+- Created revenue-based market tiers (Tier 1, Tier 2, Tier 3)
+- Prepared four analysis-ready datasets and engineered dynamic P&L & retention models
+
+The final core datasets cover:
+
+- **Engagement** (`data/engagement.csv`)
+- **Player Behaviour** (`data/player_behaviour.csv`)
+- **Monetization** (`data/monetization.csv`)
+- **Geography** (`data/geography.csv`)
+
+---
+
+## Power BI Dashboard
+
+The Power BI dashboard is organized into four interactive pages.
 
 ### 1. Executive Overview
-Provides C-suite and Product Leadership with real-time tracking of platform KPIs, revenue trajectory, DAU/MAU stickiness, ARPU, and eCPM trends.
+
+Provides a high-level view of overall game performance using executive KPIs and trend visuals such as:
+
+- ARPU (Average Revenue Per User)
+- Day-1 and Day-7 retention rates
+- DAU/MAU stickiness ratio
+- eCPM (Effective Cost Per Mille)
+- Total revenue breakdown
+- Monthly Active Users (MAU)
+- New vs. returning user composition
+- Weekly revenue trends
+
 ![Executive Overview](dashboard/01-executive-overview.png)
-
-### 2. Player Behaviour & Retention Funnel
-Focuses on user retention decay, Day-1 / Day-7 / Day-20 cohort drop-offs, and crash error diagnostic tracking across install cohorts.
-![Player Behaviour](dashboard/02-player-behaviour.png)
-
-### 3. Monetization & Ad Performance
-Deconstructs revenue streams across AdMob ad formats and In-App Purchases (IAP), eCPM variations, match rates, CTR %, and ARPPU.
-![Monetization](dashboard/03-monetization.png)
-
-### 4. Geographic & Market Tier Analytics
-Analyzes user volume versus monetization yield across Tier 1, Tier 2, and Tier 3 global markets to optimize regional ad mediation and localized offerings.
-![Geography](dashboard/04-geography.png)
-
-### Power BI Data Model Architecture
-Built on a star-schema architecture with a central shared Calendar dimension connecting daily, weekly, cohort, and geographic data tables.
-![Power BI Data Model](dashboard/05-powerbi-data-model.png)
 
 ---
 
-## Python Strategy & Growth Toolkit (`src/`)
+### 2. Player Behaviour
 
-This project includes a Python analytics suite to process data, model unit economics, and simulate growth scenarios:
+Focuses on player retention curves, onboarding funnels, and churn rates across install cohorts.
 
-1. **[`src/data_pipeline.py`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/src/data_pipeline.py)**: End-to-end data pipeline generating cleaned CSV datasets (`engagement.csv`, `player_behaviour.csv`, `monetization.csv`, `geography.csv`, `content_partners.csv`).
-2. **[`src/pnl_unit_economics.py`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/src/pnl_unit_economics.py)**: Dynamic P&L model evaluating Net Margin, COGS, LTV, blended CAC, and 100x revenue growth scenarios.
-3. **[`src/funnel_retention_analysis.py`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/src/funnel_retention_analysis.py)**: Onboarding funnel analyzer and retention decay power-law curve modeling.
+It includes:
 
-### How to Run Python Tools
+- Day-1 retention %
+- Day-7 retention %
+- Day-20 retention %
+- Retention decay curve
+- Churn rate analytics
+- Technical crash/error rate by cohort day
+
+![Player Behaviour](dashboard/02-player-behaviour.png)
+
+---
+
+### 3. Monetization
+
+Looks at how the game generates revenue and how effectively advertising & in-app purchases perform.
+
+The dashboard includes:
+
+- ARPU & ARPPU trends
+- Ad impressions & match rate
+- Ad CTR (Click-Through Rate %)
+- eCPM by ad format
+- Weekly revenue trajectory
+- Advertising vs. In-App Purchase (IAP) revenue split
+
+![Monetization](dashboard/03-monetization.png)
+
+---
+
+### 4. Geography
+
+Explores game performance and monetization efficiency across different countries and market tiers.
+
+It includes:
+
+- Global countries represented
+- Revenue by country
+- ARPU by country
+- Top 10 revenue-generating countries
+- Revenue-based market tiers (Tier 1, Tier 2, Tier 3)
+- Interactive cross-filtering
+
+![Geography](dashboard/04-geography.png)
+
+---
+
+## Key Findings & Strategic Insights
+
+The dashboard highlighted several critical areas for product optimization and growth.
+
+### Player Engagement
+DAU/MAU showed a gradual decline during the year, indicating that overall player stickiness was weakening over time and requiring retention-focused feature updates.
+
+### Retention Bottlenecks
+The largest player drop-off occurred immediately after installation. **Day-1 churn was approximately 85.5%**, making early player experience (FTUE) and onboarding friction reduction a primary area for growth.
+
+### Monetization Mix
+The game was heavily dependent on advertising, with approximately **99.6% of revenue coming from ads** in the analyzed data. Implementing a hybrid monetization model (IAP / Battle Pass + Rewarded Ads) provides significant ARPU uplift potential.
+
+### Geographic Yield
+Revenue per player varied substantially across market tiers. Comparing revenue with active user volume helped isolate high-eCPM Tier 1 markets (US, UK, DE) for ad mediation optimization versus high-volume Tier 2 markets (India, Brazil) for micro-transaction expansion.
+
+---
+
+## Power BI Data Model
+
+The four datasets have different levels of detail, including daily, weekly, cohort-day, and country-level data.
+
+![Power BI Data Model](dashboard/05-powerbi-data-model.png)
+
+To avoid creating incorrect relationships between unrelated tables, I used a shared **Calendar dimension** to support consistent date-based filtering across the data model.
+
+The dashboard is powered by DAX measures for metrics including:
+
+- Total Revenue
+- Average ARPU
+- Average ARPPU
+- Average eCPM
+- Ad Revenue %
+- DAU/MAU Ratio
+- Day-1 Retention
+- Day-7 Retention
+- Day-20 Retention
+- Churn Rate
+
+*A complete reference of DAX formulas is available in [`dax/DAX_Measures.md`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/dax/DAX_Measures.md).*
+
+---
+
+## Python Analytics & Growth Modeling (`src/`)
+
+In addition to the Power BI dashboard, I built a modular Python analytics suite for data engineering, unit economics modeling, and funnel optimization:
+
+- **[`src/data_pipeline.py`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/src/data_pipeline.py)**: Automated data ETL pipeline processing raw analytics logs into clean CSV datasets.
+- **[`src/pnl_unit_economics.py`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/src/pnl_unit_economics.py)**: P&L financial optimizer evaluating Gross Margin %, COGS, blended CAC, user LTV, and revenue growth scenarios.
+- **[`src/funnel_retention_analysis.py`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/src/funnel_retention_analysis.py)**: Onboarding funnel analyzer and retention decay power-law curve modeling.
 
 ```bash
-# Generate clean analytics datasets
+# Run data pipeline
 python src/data_pipeline.py
 
-# Run dynamic P&L & unit economics simulation
+# Run P&L and unit economics model
 python src/pnl_unit_economics.py
 
-# Run retention & funnel conversion diagnostic tool
+# Run retention funnel diagnostics
 python src/funnel_retention_analysis.py
 ```
 
 ---
 
-## Key Strategy & Growth Findings for ZO Play
+## Product & Growth Strategy Documentation (`docs/`)
 
-### 1. Monetization Risk & P&L Optimization
-- **Finding**: **99.6% of current platform revenue stems from advertising**, leaving ZO Play exposed to ad fill fluctuations.
-- **Recommendation**: Transition to a **Hybrid Monetization model** (55% IAP / Pass + 45% Ad Mediation). Introducing **ZO Pass (\$1.99/mo)** and **Rewarded Video Boosters** elevates ARPU from \$0.31 to \$0.85+.
+To extend the data analytics findings into executive business recommendations, I authored three strategic guides:
 
-### 2. Retention Bottleneck & Funnel Fix
-- **Finding**: Day-1 Churn stands at **85.5%**, with significant user loss occurring during profile registration.
-- **Recommendation**: Implement **One-Tap WhatsApp & Google Auth** to save 33,000 dropping users, lifting Day-1 Retention from 18.5% to 25.0% and generating **\$27,300 in incremental annual revenue per 100k installs**.
-
-### 3. 100x Vertical Revenue Roadmap
-- **Finding**: Scaling from \$54.3K/month to \$7.06M/month requires reducing blended CAC through organic referral loops.
-- **Recommendation**: Execute the 4-Pillar Playbook ([`docs/100X_Vertical_Growth_Strategy.md`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/docs/100X_Vertical_Growth_Strategy.md)) to expand viral coefficient $K$ from 0.15 to 0.65, achieving a **4.32x LTV/CAC ratio**.
+1. **[`docs/Mobile_Game_Growth_Strategy.md`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/docs/Mobile_Game_Growth_Strategy.md)**: Strategic playbook for scaling game revenue, hybrid monetization, and P&L margin expansion.
+2. **[`docs/Product_Management_PRD.md`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/docs/Product_Management_PRD.md)**: Product Requirement Document featuring VIP Pass, Rewarded Video Boosters, One-Tap Auth, and RICE scoring.
+3. **[`docs/Market_Competitor_Analysis.md`](file:///c:/Users/Asus/Downloads/mobile-game-analytics-powerbi-main/docs/Market_Competitor_Analysis.md)**: Competitive market analysis and ad mediation / monetization benchmarking across market tiers.
 
 ---
 
-## Repository Structure
+## Tools & Technologies Used
 
-```
-mobile-game-analytics-powerbi-main/
-├── README.md                           # Master Project Documentation & Strategy Showcase
-├── dashboard/                          # Power BI Dashboard High-Res Screenshots & Visuals
-│   ├── 01-executive-overview.png
-│   ├── 02-player-behaviour.png
-│   ├── 03-monetization.png
-│   ├── 04-geography.png
-│   └── 05-powerbi-data-model.png
-├── powerbi/                            # Production Power BI File
-│   └── mobile-game-analytics.pbix
-├── src/                                # Python Data Pipeline & Growth Analytics Engine
-│   ├── data_pipeline.py
-│   ├── pnl_unit_economics.py
-│   └── funnel_retention_analysis.py
-├── data/                               # Cleaned Production Datasets (CSV)
-│   ├── engagement.csv
-│   ├── player_behaviour.csv
-│   ├── monetization.csv
-│   ├── geography.csv
-│   └── content_partners.csv
-├── dax/                                # DAX Measures & Formula Library
-│   └── DAX_Measures.md
-├── docs/                               # Strategic Growth & Product Documentation
-│   ├── 100X_Vertical_Growth_Strategy.md
-│   ├── ZO_Play_Product_PRD.md
-│   └── Market_Competitor_Analysis.md
-└── report/                             # Project Report Assets
-```
+**Data Preparation & Python Analytics**
+- Python
+- Pandas
+- NumPy
+- Jupyter Notebook
+
+**Business Intelligence & Visualization**
+- Microsoft Power BI
+- DAX (Data Analysis Expressions)
+
+**Data Sources**
+- Firebase Analytics
+- GameAnalytics
+- Google AdMob
 
 ---
 
-## Contact & Author Profile
+## Dataset Information
+
+The original raw logs used in this project are anonymized/aggregated to protect project-specific business data.
+
+The project uses four analysis-ready datasets located in the `data/` folder:
+
+- `engagement.csv`
+- `player_behaviour.csv`
+- `monetization.csv`
+- `geography.csv`
+
+The repository includes the complete methodology, Python scripts, dashboard screenshots, Power BI data model, DAX library, strategic documentation, and project report to demonstrate the complete end-to-end analytics workflow.
+
+---
+
+## Author Profile
 
 - **Author**: Aman Yadav  
-- **GitHub Profile**: [https://github.com/amanyadav01234](https://github.com/amanyadav01234)  
-- **Target Role**: Strategy & Growth Intern (LionZO Technologies — ZO Play)  
+- **GitHub**: [https://github.com/amanyadav01234](https://github.com/amanyadav01234)  

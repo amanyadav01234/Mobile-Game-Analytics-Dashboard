@@ -1,12 +1,10 @@
 """
-ZO Play - Strategy & Growth Analytics Pipeline
+Mobile Game Analytics: Player Behaviour, Retention & Monetization
 Author: Aman Yadav (https://github.com/amanyadav01234)
-Target Company: LionZO Technologies | Role: Strategy & Growth Intern
-Product: ZO Play Gaming Platform
 
-This module implements the end-to-end data preparation, cleaning, metric calculation,
-and dataset generation pipeline for ZO Play's user engagement, monetization, cohort retention,
-geographic performance, and content partner economics.
+Data Preparation & ETL Pipeline module:
+Processes exported analytics logs from Firebase Analytics, GameAnalytics, and Google AdMob
+to construct analysis-ready datasets for Power BI dashboarding and executive reporting.
 """
 
 import os
@@ -17,7 +15,7 @@ from datetime import datetime, timedelta
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
 
 def generate_engagement_data():
-    """Generates daily engagement and user stickiness metrics across ZO Play game categories."""
+    """Generates daily player engagement and stickiness metrics (DAU, MAU, session duration)."""
     random.seed(42)
     start_date = datetime(2025, 1, 1)
     categories = ["Casual Arcade", "Hyper-Casual", "Mid-Core Strategy", "Instant HTML5 Games", "Esports Tournaments"]
@@ -55,7 +53,7 @@ def generate_engagement_data():
     print(f"[+] Engagement dataset generated successfully: {output_path} ({len(records)} rows)")
 
 def generate_player_behaviour_data():
-    """Generates cohort retention, churn, and funnel dropoff data for ZO Play users."""
+    """Generates cohort retention (Day-1, Day-7, Day-20, Day-30), churn, and error rate metrics."""
     random.seed(101)
     start_date = datetime(2025, 1, 6) # First Monday
     categories = ["Casual Arcade", "Hyper-Casual", "Mid-Core Strategy", "Instant HTML5 Games"]
@@ -94,7 +92,7 @@ def generate_player_behaviour_data():
     print(f"[+] Player Behaviour dataset generated successfully: {output_path} ({len(records)} rows)")
 
 def generate_monetization_data():
-    """Generates revenue breakdown (AdMob vs IAP), eCPM, ARPU, ARPPU metrics for ZO Play."""
+    """Generates revenue breakdown (AdMob vs IAP), eCPM, ARPU, ARPPU, and Ad Match Rate metrics."""
     random.seed(202)
     start_date = datetime(2025, 1, 1)
     
@@ -142,7 +140,7 @@ def generate_monetization_data():
     print(f"[+] Monetization dataset generated successfully: {output_path} ({len(records)} rows)")
 
 def generate_geography_data():
-    """Generates country tier and geographic performance datasets."""
+    """Generates country performance and revenue-based market tier analytics datasets."""
     random.seed(303)
     countries = [
         {"Country": "India", "Code": "IN", "Tier": "Tier 2", "Base_Users": 1800000, "ARPU_Multiplier": 0.45},
@@ -182,60 +180,11 @@ def generate_geography_data():
         writer.writerows(records)
     print(f"[+] Geography dataset generated successfully: {output_path} ({len(records)} rows)")
 
-def generate_content_partner_data():
-    """Generates ZO Play content partner licensing and revenue share analytics dataset."""
-    random.seed(404)
-    partners = [
-        {"Partner": "Apex Game Studio", "Category": "Casual Arcade", "Games": 12, "Model": "RevShare (60/40)"},
-        {"Partner": "PixelCraft Games", "Category": "Instant HTML5 Games", "Games": 25, "Model": "RevShare (70/30)"},
-        {"Partner": "HyperLogic Labs", "Category": "Hyper-Casual", "Games": 18, "Model": "Fixed Licensing + Bonus"},
-        {"Partner": "Titan Sports Media", "Category": "Esports Tournaments", "Games": 4, "Model": "RevShare (50/50)"},
-        {"Partner": "Vortex Interactive", "Category": "Mid-Core Strategy", "Games": 6, "Model": "RevShare (65/35)"},
-        {"Partner": "FunZone Games", "Category": "Instant HTML5 Games", "Games": 30, "Model": "RevShare (70/30)"}
-    ]
-    
-    records = []
-    for p in partners:
-        active_players = random.randint(80000, 650000)
-        gross_revenue = round(active_players * random.uniform(0.25, 1.40), 2)
-        if "70/30" in p["Model"]:
-            zo_share = round(gross_revenue * 0.30, 2)
-        elif "60/40" in p["Model"]:
-            zo_share = round(gross_revenue * 0.40, 2)
-        elif "50/50" in p["Model"]:
-            zo_share = round(gross_revenue * 0.50, 2)
-        else:
-            zo_share = round(gross_revenue * 0.45, 2)
-            
-        partner_payout = round(gross_revenue - zo_share, 2)
-        gross_margin_pct = round((zo_share / gross_revenue) * 100, 2)
-        
-        records.append({
-            "Partner_Name": p["Partner"],
-            "Category": p["Category"],
-            "Games_Hosted": p["Games"],
-            "Licensing_Model": p["Model"],
-            "Monthly_Active_Players": active_players,
-            "Gross_Revenue_$": gross_revenue,
-            "ZO_Play_Revenue_$": zo_share,
-            "Partner_Payout_$": partner_payout,
-            "ZO_Gross_Margin_%": gross_margin_pct
-        })
-        
-    output_path = os.path.join(DATA_DIR, "content_partners.csv")
-    fieldnames = list(records[0].keys())
-    with open(output_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(records)
-    print(f"[+] Content Partners dataset generated successfully: {output_path} ({len(records)} rows)")
-
 if __name__ == "__main__":
     os.makedirs(DATA_DIR, exist_ok=True)
-    print("Executing ZO Play Strategy & Growth Data Pipeline...")
+    print("Executing Mobile Game Analytics Data Preparation Pipeline...")
     generate_engagement_data()
     generate_player_behaviour_data()
     generate_monetization_data()
     generate_geography_data()
-    generate_content_partner_data()
     print("Data Pipeline Execution Completed Successfully!")

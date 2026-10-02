@@ -1,10 +1,8 @@
-# ZO Play Analytics — Power BI DAX Measures Library
+# Mobile Game Analytics — Power BI DAX Measures Library
 
 **Author**: Aman Yadav ([github.com/amanyadav01234](https://github.com/amanyadav01234))  
-**Target Organization**: LionZO Technologies  
-**Product**: ZO Play Gaming Platform  
 
-This document lists the production DAX measures implemented in the **ZO Play Power BI Dashboard** to monitor platform growth, monetization efficiency, user retention funnels, and feature P&L margins.
+This reference document lists the production DAX measures implemented in the **Mobile Game Analytics Power BI Dashboard** to evaluate player behaviour, retention curves, monetization efficiency, and geographic performance.
 
 ---
 
@@ -62,7 +60,7 @@ Average eCPM = AVERAGE(Monetization[eCPM_$])
 
 ---
 
-## 2. Engagement & Retention Measures
+## 2. Player Engagement & Retention Measures
 
 ### DAU / MAU Stickiness Ratio (%)
 ```dax
@@ -93,28 +91,4 @@ Day-1 Churn % = 100 - [Day-1 Retention %]
 ### Crash / Technical Error Rate (%)
 ```dax
 Crash Error Rate % = AVERAGE(Player_Behaviour[Crash_Error_Rate_%])
-```
-
----
-
-## 3. P&L & Content Partner Economics
-
-### ZO Play Net Revenue Share ($)
-```dax
-ZO Play Partner Revenue = SUM(Content_Partners[ZO_Play_Revenue_$])
-```
-
-### Partner Payout Amount ($)
-```dax
-Partner Payout = SUM(Content_Partners[Partner_Payout_$])
-```
-
-### Platform Gross Margin (%)
-```dax
-Gross Margin % = 
-DIVIDE(
-    [ZO Play Partner Revenue],
-    SUM(Content_Partners[Gross_Revenue_$]),
-    0
-) * 100
 ```
